@@ -1,5 +1,14 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
+  let seenNumbers = {};
+  for (let i = 0; i < array.length; i++) {
+    const difference = target - array[i];
+    if (seenNumbers[difference]) {
+      return true;
+    }
+    seenNumbers[array[i]] = true;
+  }
+  return false;
 }
 
 /* 
@@ -8,6 +17,26 @@ function hasTargetSum(array, target) {
 
 /* 
   Add your pseudocode here
+
+  function hasTargetSum(array, target):
+  // Create an empty object to keep track of the numbers we've seen so far
+  seenNumbers = {}
+  
+  // Loop through the array
+  for i from 0 to length of array:
+    
+    // Calculate the difference between the target and the current element
+    difference = target - array[i]
+    
+    // If the difference is in the seenNumbers object, we have found a pair that adds up to the target
+    if difference in seenNumbers:
+      return true
+    
+    // Otherwise, add the current element to the seenNumbers object
+    seenNumbers[array[i]] = true
+  
+  // If we have checked all elements and no such pair exists, we return false
+  return false
 */
 
 /*
